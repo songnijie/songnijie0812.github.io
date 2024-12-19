@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屏東多元音樂</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #fdfd96, #ffdab9);
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            margin: 50px 0 20px;
+            font-size: 4em; /* 字體放大 */
+            color: #444;
+        }
+        h2 {
+            font-size: 2.5em; /* 字體放大 */
+            color: #555;
+        }
+        button {
+            display: block;
+            margin: 30px auto;
+            padding: 20px 40px;
+            font-size: 2em; /* 字體放大 */
+            color: #fff;
+            background-color: #87ceeb;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #4682b4;
+            transform: scale(1.1);
+        }
+        button:active {
+            background-color: #315f72;
+            transform: scale(0.95);
+        }
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px;
+        }
+        section {
+            width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .emoji {
+            font-size: 3em; /* 字體放大 */
+            position: absolute;
+            opacity: 0.8;
+            transform: translate(-50%, -50%);
+        }
+        .emoji:nth-child(1) { left: 15%; top: 20%; }
+        .emoji:nth-child(2) { left: 80%; top: 30%; }
+        .emoji:nth-child(3) { left: 50%; top: 70%; }
+    </style>
+</head>
+<body>
+    <h1>屏東多元音樂</h1>
+    <div id="content">
+        <div>
+            <section>
+                <h2>閩南(恆春民謠)</h2>
+                <p>閩南音樂代表性歌謠包括《思想起》，常使用月琴伴奏，歌手如陳達等。</p>
+                <button onclick="document.location='1.html'">了解更多</button>
+            </section>
+            <section>
+                <h2>客家音樂</h2>
+                <p>客家音樂的特色是優美而含蓄，代表性樂器為嗩吶，歌謠如《半山謠》。</p>
+                <button onclick="document.location='2.html'">了解更多</button>
+            </section>
+            <section>
+                <h2>原住民音樂</h2>
+                <p>原住民音樂以多聲部合唱聞名，鼻笛是其特色樂器，歌手如少妮瑤。</p>
+                <button onclick="document.location='3.html'">了解更多</button>
+            </section>
+        </div>
+    </div>
+    <span class="emoji">🐍</span>
+</body>
+</html>
