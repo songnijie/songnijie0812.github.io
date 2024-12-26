@@ -120,17 +120,8 @@
 
     <script>
         function toggleContent(id) {
-            // 獲取所有的隱藏內容
-            const allContent = document.querySelectorAll('.hidden-content');
-            allContent.forEach(content => {
-                if (content.id === id) {
-                    // 切換當前按鈕的內容顯示狀態
-                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
-                } else {
-                    // 其他的內容保持隱藏
-                    content.style.display = 'none';
-                }
-            });
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
