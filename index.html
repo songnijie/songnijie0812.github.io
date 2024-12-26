@@ -57,42 +57,81 @@
             padding: 30px;
             text-align: center;
         }
-        iframe {
-            width: 100%;
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
             border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .emoji {
-            font-size: 3em; /* 字體放大 */
-            position: absolute;
-            opacity: 0.8;
-            transform: translate(-50%, -50%);
-        }
-        .emoji:nth-child(1) { left: 15%; top: 20%; }
-        .emoji:nth-child(2) { left: 80%; top: 30%; }
-        .emoji:nth-child(3) { left: 50%; top: 70%; }
     </style>
 </head>
 <body>
     <h1>屏東多元音樂</h1>
     <div id="content">
         <div>
+            <!-- 閩南 -->
             <section>
                 <h2>閩南(恆春民謠)</h2>
                 <p>閩南音樂代表性歌謠包括《思想起》，常使用月琴伴奏，歌手如陳達等。</p>
-                <button onclick="document.location='1.html'">了解更多</button>
+                <button onclick="toggleContent('content-minnan')">了解更多</button>
+                <div id="content-minnan" class="hidden-content">
+                    <h3>歌手：陳達</h3>
+                    <p><img src="陳達.jpg" alt="陳達" style="width: 100%; border-radius: 10px;"></p>
+                    <h3>樂器：月琴</h3>
+                    <p><img src="月琴.jpg" alt="月琴" style="width: 100%; border-radius: 10px;"></p>
+                    <h3>歌謠：思想起</h3>
+                    <p><iframe src="https://www.youtube.com/embed/xnJP-CzmGT4?si=Fh7pSCJPrBoLx-Z5" allowfullscreen></iframe></p>
+                </div>
             </section>
+
+            <!-- 客家 -->
             <section>
                 <h2>客家音樂</h2>
                 <p>客家音樂的特色是優美而含蓄，代表性樂器為嗩吶，歌謠如《半山謠》。</p>
-                <button onclick="document.location='2.html'">了解更多</button>
+                <button onclick="toggleContent('content-hakka')">了解更多</button>
+                <div id="content-hakka" class="hidden-content">
+                    <h3>歌手：溫子梅</h3>
+                    <p><img src="歌手溫子梅.gif" alt="溫子梅" style="width: 100%; border-radius: 10px;"></p>
+                    <h3>樂器：嗩吶</h3>
+                    <p><img src="嗩吶.jpg" alt="嗩吶" style="width: 100%; border-radius: 10px;"></p>
+                    <h3>歌謠：半山謠</h3>
+                    <p><iframe src="https://www.youtube.com/embed/FvN_r52zDzY?si=wWSUuncZ1-YyG-QY" allowfullscreen></iframe></p>
+                </div>
             </section>
+
+            <!-- 原住民 -->
             <section>
                 <h2>原住民音樂</h2>
                 <p>原住民音樂以多聲部合唱聞名，鼻笛是其特色樂器，歌手如少妮瑤。</p>
-                <button onclick="document.location='3.html'">了解更多</button>
+                <button onclick="toggleContent('content-aboriginal')">了解更多</button>
+                <div id="content-aboriginal" class="hidden-content">
+                    <h3>歌手：少妮瑤</h3>
+                    <p><img src="少妮瑤.jpg" alt="少妮瑤" style="width: 100%; border-radius: 10px;"></p>
+                    <h3>樂器：鼻笛</h3>
+                    <p><img src="鼻笛.jpg" alt="鼻笛" style="width: 100%; border-radius: 10px;"></p>
+                    <h3>歌謠：鼻笛之歌</h3>
+                    <p><iframe src="https://www.youtube.com/embed/isiFcStuJ4U?si=l2cOHCP4A3tP3bG-" allowfullscreen></iframe></p>
+                </div>
             </section>
         </div>
     </div>
-    <span class="emoji">🐍</span>
+
+    <script>
+        function toggleContent(id) {
+            // 獲取所有的隱藏內容
+            const allContent = document.querySelectorAll('.hidden-content');
+            allContent.forEach(content => {
+                if (content.id === id) {
+                    // 切換當前按鈕的內容顯示狀態
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    // 其他的內容保持隱藏
+                    content.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
