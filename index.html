@@ -9,20 +9,19 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, rgba(253, 253, 150, 0.8), rgba(255, 218, 185, 0.8)),
-            url('屏東.jpg');
+            font-family: '思源宋體', sans-serif;
+            background: linear-gradient(to bottom, rgba(253, 253, 150, 0.8), rgba(255, 218, 185, 0.8));
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
+            background-image: url('屏東.jpeg');
             color: #333;
             text-align: center;
         }
         h1 {
             margin: 50px 0 20px;
             font-size: 4em; /* 字體放大 */
-            color: #444;
-            font-family: 'Noto Serif TC', Arial, sans-serif; /* 使用思源宋體 */
+            color: SteelBlue;
         }
         h2 {
             font-size: 2.5em; /* 字體放大 */
@@ -63,13 +62,9 @@
             padding: 30px;
             text-align: center;
         }
-        .hidden-content {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background: #fff;
+        iframe {
+            width: 100%;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -77,58 +72,22 @@
     <h1>屏東多元音樂</h1>
     <div id="content">
         <div>
-            <!-- 閩南 -->
             <section>
                 <h2>閩南(恆春民謠)</h2>
                 <p>閩南音樂代表性歌謠包括《思想起》，常使用月琴伴奏，歌手如陳達等。</p>
-                <button onclick="toggleContent('content-minnan')">了解更多</button>
-                <div id="content-minnan" class="hidden-content">
-                    <h3>歌手：陳達</h3>
-                    <p><img src="陳達.jpg" alt="陳達" style="width: 100%; border-radius: 10px;"></p>
-                    <h3>樂器：月琴</h3>
-                    <p><img src="月琴.jpg" alt="月琴" style="width: 100%; border-radius: 10px;"></p>
-                    <h3>歌謠：思想起</h3>
-                    <p><iframe src="https://www.youtube.com/embed/xnJP-CzmGT4?si=Fh7pSCJPrBoLx-Z5" allowfullscreen></iframe></p>
-                </div>
+                <button onclick="document.location='1.html'">了解更多</button>
             </section>
-
-            <!-- 客家 -->
             <section>
                 <h2>客家音樂</h2>
                 <p>客家音樂的特色是優美而含蓄，代表性樂器為嗩吶，歌謠如《半山謠》。</p>
-                <button onclick="toggleContent('content-hakka')">了解更多</button>
-                <div id="content-hakka" class="hidden-content">
-                    <h3>歌手：溫子梅</h3>
-                    <p><img src="歌手溫子梅.gif" alt="溫子梅" style="width: 100%; border-radius: 10px;"></p>
-                    <h3>樂器：嗩吶</h3>
-                    <p><img src="嗩吶.jpg" alt="嗩吶" style="width: 100%; border-radius: 10px;"></p>
-                    <h3>歌謠：半山謠</h3>
-                    <p><iframe src="https://www.youtube.com/embed/FvN_r52zDzY?si=wWSUuncZ1-YyG-QY" allowfullscreen></iframe></p>
-                </div>
+                <button onclick="document.location='2.html'">了解更多</button>
             </section>
-
-            <!-- 原住民 -->
             <section>
                 <h2>原住民音樂</h2>
                 <p>原住民音樂以多聲部合唱聞名，鼻笛是其特色樂器，歌手如少妮瑤。</p>
-                <button onclick="toggleContent('content-aboriginal')">了解更多</button>
-                <div id="content-aboriginal" class="hidden-content">
-                    <h3>歌手：少妮瑤</h3>
-                    <p><img src="少妮瑤.jpg" alt="少妮瑤" style="width: 100%; border-radius: 10px;"></p>
-                    <h3>樂器：鼻笛</h3>
-                    <p><img src="鼻笛.jpg" alt="鼻笛" style="width: 100%; border-radius: 10px;"></p>
-                    <h3>歌謠：鼻笛之歌</h3>
-                    <p><iframe src="https://www.youtube.com/embed/isiFcStuJ4U?si=l2cOHCP4A3tP3bG-" allowfullscreen></iframe></p>
-                </div>
+                <button onclick="document.location='3.html'">了解更多</button>
             </section>
         </div>
     </div>
-
-    <script>
-        function toggleContent(id) {
-            const content = document.getElementById(id);
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
-    </script>
 </body>
 </html>
