@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>原住民音樂</title>
     <style>
         body {
@@ -44,9 +45,26 @@
             width: 100%;
             border-radius: 10px;
         }
+        nav {
+            font-size: 50%;
+        }
+        @media (max-width: 576px) {
+            nav {
+                font-size: 80%;
+            }
+            h1 {
+                font-size: 200%;
+            }
+        }
     </style>
 </head>
 <body>
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+        <li class="breadcrumb-item active" aria-current="page">原住民音樂</li>
+    </ol>
+    </nav>
     <h1>原住民音樂</h1>
     <div>
         <section>
