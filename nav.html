@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <!-- 網頁使用 UTF-8 編碼與響應式設計 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>nav</title>
+
+  <!-- 載入 Bootstrap 樣式 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <style>
+    /* 設定整個網頁背景與字體樣式 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: '思源宋體', 'Noto Serif TC', serif;
+      background: url('鱷魚.png') no-repeat center center fixed; /* 使用鱷魚圖片作為背景 */
+      background-size: cover; /* 背景圖覆蓋整個畫面 */
+      height: 100vh; /* 設定全螢幕高度 */
+      overflow: hidden; /* 隱藏滾動條 */
+    }
+
+    /* 設定內容容器為相對定位 */
+    #content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* section 樣式：每個按鈕區塊的外框 */
+    section {
+      width: 350px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+      padding: 30px;
+      text-align: center;
+      position: absolute; /* 絕對定位，配合 JS 改變位置 */
+      transition: top 0.8s ease, left 0.8s ease; /* 平滑動畫移動效果 */
+    }
+
+    /* 按鈕樣式設計 */
+    button {
+      display: block;
+      margin: auto;
+      padding: 20px 40px;
+      font-size: 2em;
+      background-color: white;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      background-image: linear-gradient(90deg, #007BFF, #FFD700); /* 金藍漸層文字 */
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text; /* 讓文字呈現背景漸層 */
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    /* 滑鼠移到按鈕上會放大 */
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    /* 點擊按鈕時會稍微縮小 */
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* 平板尺寸以下的樣式調整 */
+    @media (max-width: 991.98px) {
+      section {
+        width: 80%;
+      }
+      button {
+        font-size: 1.5em;
+      }
+    }
+
+    /* 手機尺寸以下的樣式調整 */
+    @media (max-width: 576px) {
+      section {
+        width: 90%;
+      }
+      button {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 頁面導覽列（Breadcrumb） -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+      <li class="breadcrumb-item active" aria-current="page">導覽頁</li>
+    </ol>
+  </nav>
+
+  <!-- 按鈕容器區域 -->
+  <div id="content">
+    <!-- 每個 section 裡面放一個會跳轉頁面的按鈕 -->
+    <section><button onclick="document.location='1.html'">恆春民謠</button></section>
+    <section><button onclick="document.location='2.html'">客家音樂</button></section>
+    <section><button onclick="document.location='3.html'">原住民音樂</button></section>
+  </div>
+
+  <!-- JavaScript 程式：讓按鈕隨機移動位置 -->
+  <script>
+    function moveButtons() {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const maxTop = 80;  // 限制頂部最大位置（百分比）
+        const maxLeft = 80; // 限制左側最大位置（百分比）
+        section.style.top = Math.random() * maxTop + '%'; // 隨機設定上方距離
+        section.style.left = Math.random() * maxLeft + '%'; // 隨機設定左側距離
+      });
+    }
+
+    // 頁面載入完成後啟動按鈕位置移動功能
+    window.onload = () => {
+      moveButtons(); // 初始顯示時即隨機位置
+      setInterval(moveButtons, 2000); // 每 2 秒改變位置
+    };
+  </script>
+
+  <!-- 載入 Bootstrap 功能用 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
