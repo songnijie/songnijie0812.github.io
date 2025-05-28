@@ -1,135 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <!-- 設定網頁編碼與響應式設計 -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>nav</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pingtung</title>
 
-  <!-- 引入 Bootstrap 樣式庫，方便使用響應式元件 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- 引入 Google 字體（思源宋體）與 Bootstrap CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <style>
-    /* 設定整體網頁字型與背景樣式 */
     body {
+      font-family: '思源宋體', 'Noto Serif TC', serif;
+      background: url(屏東.jpeg) center/cover fixed;
       margin: 0;
       padding: 0;
-      font-family: '思源宋體', 'Noto Serif TC', serif;
-      background: url('鱷魚.png') no-repeat center center; /* 傳統風格背景圖片，置中顯示 */
-      background-size: cover; /* 圖片填滿整個畫面 */
-      background-attachment: scroll; /* ✅ 在行動裝置上避免 fixed 引起視差不適 */
-      min-height: 100vh; /* 最小高度設定為螢幕高度 */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* 內容主體容器，讓按鈕能正常滾動 */
-    #content {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: auto; /* ✅ 行動裝置上可正常上下滑動 */
-    }
-
-    /* 每一個 section 包裹一個按鈕，並以絕對定位呈現 */
-    section {
-      width: 350px;
-      background: rgba(255, 255, 255, 0.9); /* ✅ 白色背景加點透明，改善文字可讀性 */
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 傳統中帶現代感的陰影設計 */
-      padding: 30px;
+    .top-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5vw 2vw;
       text-align: center;
-      position: absolute;
-      transition: top 0.8s ease, left 0.8s ease; /* 平滑位置移動動畫 */
     }
 
-    /* 按鈕樣式設定 */
-    button {
-      display: block;
-      margin: auto;
+    .top-title {
+      margin-bottom: 2rem;
+    }
+
+    h1.brush-text {
+      position: relative;
+      display: inline-block;
+      color: white;
+      font-weight: bold;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       padding: 20px 40px;
-      font-size: 2em;
-      background-color: white;
+      letter-spacing: 4px;
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    h1.brush-text::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #e50914 0%, #d40813 100%);
+      border-radius: 20px;
+      transform: rotate(-5deg);
+      z-index: -1;
+      filter: blur(1px);
+      clip-path: polygon(0 20%, 10% 0, 90% 0, 100% 20%, 90% 100%, 10% 100%);
+    }
+
+    .top-body p {
+      color: white;
+      font-size: clamp(1rem, 2.5vw, 2rem);
+      margin: 0 1rem;
+      max-width: 800px;
+    }
+
+    .top-body button {
+      background: linear-gradient(45deg, #e50914, #d40813);
       border: none;
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      background-image: linear-gradient(90deg, #007BFF, #FFD700); /* ✅ 傳統藍金漸層象徵文化與榮耀 */
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-      transition: transform 0.3s;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.2em;
+      border-radius: 25px;
+      box-shadow: 0 4px 8px rgba(213, 8, 19, 0.6);
       cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
     }
 
-    /* 滑鼠移入放大效果 */
-    button:hover {
-      transform: scale(1.1);
+    .top-body button:hover {
+      background: linear-gradient(45deg, #d40813, #e50914);
+      box-shadow: 0 6px 12px rgba(213, 8, 19, 0.8);
+      transform: translateY(-3px);
     }
 
-    /* 點擊縮小效果 */
-    button:active {
-      transform: scale(0.95);
-    }
-
-    /* 平板以下螢幕的樣式調整 */
-    @media (max-width: 991.98px) {
-      section {
-        width: 80%;
-      }
-      button {
-        font-size: 1.5em;
-      }
-    }
-
-    /* 手機螢幕的樣式進一步調整 */
     @media (max-width: 576px) {
-      section {
-        width: 90%;
-        padding: 20px;
+      .top-title {
+        padding-top: 60px;
       }
-      button {
-        font-size: 1.2em;
-        padding: 15px 30px;
+
+      .top-body {
+        padding: 10px;
+      }
+
+      .top-body p {
+        margin-top: 1rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Bootstrap 麵包屑導覽，提供上下文導覽結構 -->
-  <nav aria-label="breadcrumb" class="bg-light px-3 py-2">
-    <ol class="breadcrumb mb-0">
-      <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
-      <li class="breadcrumb-item active" aria-current="page">導覽頁</li>
-    </ol>
-  </nav>
-
-  <!-- 內容區域：容納所有會移動的按鈕 -->
-  <div id="content">
-    <!-- 各個音樂主題的按鈕 -->
-    <section><button onclick="document.location='1.html'">恆春民謠</button></section>
-    <section><button onclick="document.location='2.html'">客家音樂</button></section>
-    <section><button onclick="document.location='3.html'">原住民音樂</button></section>
+  <div class="top-content">
+    <div class="top-title">
+      <h1 class="brush-text">被音樂澆灌的屏東</h1>
+    </div>
+    <div class="top-body">
+      <p>位於台灣最南端的屏東，因其獨特的地理位置，才得以保留各種各具特色的在地歌謠。</p>
+      <button onclick="document.location='nav.html'">了解更多</button>
+    </div>
   </div>
 
-  <!-- JavaScript：定時隨機改變按鈕位置，使介面更活潑 -->
-  <script>
-    function moveButtons() {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => {
-        const maxTop = 80;  // 最大上邊距百分比（避免按鈕跑出畫面）
-        const maxLeft = 80; // 最大左邊距百分比
-        section.style.top = Math.random() * maxTop + '%';
-        section.style.left = Math.random() * maxLeft + '%';
-      });
-    }
-
-    // 頁面載入完成後開始動態移動
-    window.onload = () => {
-      moveButtons(); // 初始位置
-      setInterval(moveButtons, 2000); // 每兩秒變換位置
-    };
-  </script>
-
-  <!-- 引入 Bootstrap JS 功能模組 -->
+  <!-- 引入 Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
