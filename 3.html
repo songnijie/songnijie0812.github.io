@@ -31,23 +31,26 @@
             color: #CD5C5C; 
         }
 
-        /* 主要內容容器，使用 Flexbox */
+        /* 主內容容器 - 使用 flex 排版 */
         div {
             display: flex;
-            flex-wrap: wrap; /* 螢幕寬度小時自動換行 */
-            justify-content: center; /* 中央對齊 */
-            gap: 20px; /* 區塊間距 */
-            margin: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
         }
 
-        /* 單一內容區塊樣式 */
+        /* 每個內容區塊樣式 */
         section {
-            width: 300px;
+            flex: 1 1 30%; /* 寬度約為 30%，允許縮放 */
+            max-width: 360px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 24px;
             text-align: center;
+            transition: transform 0.3s ease;
         }
 
         /* 圖片寬度最大100%，自動調整高度，並加圓角 */
