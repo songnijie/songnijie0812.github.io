@@ -34,20 +34,23 @@
         /* 主內容容器 - 使用 flex 排版 */
         div {
             display: flex;
-            flex-wrap: wrap; /* 小螢幕時換行 */
-            justify-content: center; /* 中央對齊 */
-            gap: 20px; /* 區塊間距 */
-            margin: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 1200px;
         }
 
         /* 每個內容區塊樣式 */
         section {
-            width: 300px;
+            flex: 1 1 30%; /* 寬度約為 30%，允許縮放 */
+            max-width: 360px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 24px;
             text-align: center;
+            transition: transform 0.3s ease;
         }
 
         /* 圖片最大寬度與圓角 */
