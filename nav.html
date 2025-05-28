@@ -1,135 +1,84 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <!-- 設定網頁編碼與響應式設計 -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>nav</title>
-
-  <!-- 引入 Bootstrap 樣式庫，方便使用響應式元件 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>動態移動的漸層文字按鈕</title>
   <style>
-    /* 設定整體網頁字型與背景樣式 */
     body {
-      margin: 0;
-      padding: 0;
       font-family: '思源宋體', 'Noto Serif TC', serif;
-      background: url('鱷魚.png') no-repeat center center; /* 傳統風格背景圖片，置中顯示 */
-      background-size: cover; /* 圖片填滿整個畫面 */
-      background-attachment: scroll; /* ✅ 在行動裝置上避免 fixed 引起視差不適 */
-      min-height: 100vh; /* 最小高度設定為螢幕高度 */
+      background-image: url('鯨魚.jpg');
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+      position: relative; /* 讓絕對定位的按鈕依此定位 */
+      overflow: hidden;
     }
-
-    /* 內容主體容器，讓按鈕能正常滾動 */
-    #content {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: auto; /* ✅ 行動裝置上可正常上下滑動 */
-    }
-
-    /* 每一個 section 包裹一個按鈕，並以絕對定位呈現 */
-    section {
-      width: 350px;
-      background: rgba(255, 255, 255, 0.9); /* ✅ 白色背景加點透明，改善文字可讀性 */
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 傳統中帶現代感的陰影設計 */
-      padding: 30px;
-      text-align: center;
-      position: absolute;
-      transition: top 0.8s ease, left 0.8s ease; /* 平滑位置移動動畫 */
-    }
-
-    /* 按鈕樣式設定 */
     button {
-      display: block;
-      margin: auto;
+      position: absolute;
       padding: 20px 40px;
       font-size: 2em;
-      background-color: white;
+      font-weight: bold;
+      background-color: white; /* 純白背景 */
       border: none;
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      background-image: linear-gradient(90deg, #007BFF, #FFD700); /* ✅ 傳統藍金漸層象徵文化與榮耀 */
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-      transition: transform 0.3s;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      color: black; /* 文字預設色 */
       cursor: pointer;
+      overflow: hidden;
+      user-select: none;
     }
-
-    /* 滑鼠移入放大效果 */
-    button:hover {
+    button::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 2em;
+      background: linear-gradient(90deg, #007BFF, #FFD700);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      pointer-events: none;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    button:hover::before {
       transform: scale(1.1);
     }
-
-    /* 點擊縮小效果 */
-    button:active {
+    button:active::before {
       transform: scale(0.95);
-    }
-
-    /* 平板以下螢幕的樣式調整 */
-    @media (max-width: 991.98px) {
-      section {
-        width: 80%;
-      }
-      button {
-        font-size: 1.5em;
-      }
-    }
-
-    /* 手機螢幕的樣式進一步調整 */
-    @media (max-width: 576px) {
-      section {
-        width: 90%;
-        padding: 20px;
-      }
-      button {
-        font-size: 1.2em;
-        padding: 15px 30px;
-      }
     }
   </style>
 </head>
-
 <body>
-  <!-- Bootstrap 麵包屑導覽，提供上下文導覽結構 -->
-  <nav aria-label="breadcrumb" class="bg-light px-3 py-2">
-    <ol class="breadcrumb mb-0">
-      <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
-      <li class="breadcrumb-item active" aria-current="page">導覽頁</li>
-    </ol>
-  </nav>
 
-  <!-- 內容區域：容納所有會移動的按鈕 -->
-  <div id="content">
-    <!-- 各個音樂主題的按鈕 -->
-    <section><button onclick="document.location='1.html'">恆春民謠</button></section>
-    <section><button onclick="document.location='2.html'">客家音樂</button></section>
-    <section><button onclick="document.location='3.html'">原住民音樂</button></section>
-  </div>
+  <button data-text="恆春民謠" onclick="document.location='1.html'">恆春民謠</button>
+  <button data-text="客家音樂" onclick="document.location='2.html'">客家音樂</button>
+  <button data-text="原住民音樂" onclick="document.location='3.html'">原住民音樂</button>
 
-  <!-- JavaScript：定時隨機改變按鈕位置，使介面更活潑 -->
   <script>
     function moveButtons() {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => {
-        const maxTop = 80;  // 最大上邊距百分比（避免按鈕跑出畫面）
-        const maxLeft = 80; // 最大左邊距百分比
-        section.style.top = Math.random() * maxTop + '%';
-        section.style.left = Math.random() * maxLeft + '%';
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        const maxTop = window.innerHeight - button.offsetHeight - 20; // 減少點避免碰邊
+        const maxLeft = window.innerWidth - button.offsetWidth - 20;
+        const top = Math.random() * maxTop;
+        const left = Math.random() * maxLeft;
+        button.style.top = top + 'px';
+        button.style.left = left + 'px';
       });
     }
 
-    // 頁面載入完成後開始動態移動
     window.onload = () => {
-      moveButtons(); // 初始位置
-      setInterval(moveButtons, 2000); // 每兩秒變換位置
+      moveButtons();
+      setInterval(moveButtons, 2000);
     };
-  </script>
 
-  <!-- 引入 Bootstrap JS 功能模組 -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    // 視窗大小變動時重新定位，避免按鈕跑出畫面
+    window.onresize = moveButtons;
+  </script>
 </body>
 </html>
