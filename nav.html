@@ -14,6 +14,17 @@
       position: relative; /* 讓絕對定位的按鈕依此定位 */
       overflow: hidden;
     }
+    nav {
+        background-color: rgba(255, 255, 255, 0.85); /* 半透明白底，保持乾淨傳統感 */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 輕微陰影提升層次感 */
+        padding: 0.5rem 1rem;
+        font-size: 1.1em;
+        font-weight: 600;
+        font-family: '思源宋體', 'Noto Serif TC', serif;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
     button {
       position: absolute;
       padding: 20px 40px;
@@ -54,6 +65,13 @@
   </style>
 </head>
 <body>
+  <!-- 麵包屑導覽 -->
+  <nav aria-label="breadcrumb" class="bg-light px-3 py-2">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+      <li class="breadcrumb-item active" aria-current="page">導覽頁</li>
+    </ol>
+  </nav>
 
   <button data-text="恆春民謠" onclick="document.location='1.html'">恆春民謠</button>
   <button data-text="客家音樂" onclick="document.location='2.html'">客家音樂</button>
